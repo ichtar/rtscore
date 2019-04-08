@@ -1,0 +1,4 @@
+#!/bin/sh
+
+title=$(echo $*|sed 's/ /+/g')
+curl -s "http://www.omdbapi.com/?t=$title&apikey=960977f4"|jq '.Title,.Ratings[1].Value'|sed 'N;s/^/The movie: /;s/\n/ got a rotten tomato score of /;'
